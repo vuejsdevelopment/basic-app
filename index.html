@@ -10,3 +10,77 @@
     <!-- built files will be auto injected -->
   </body>
 </html>
+
+<style>
+  html,body{
+    margin: 0;
+    height: 100%;
+  }
+  /* Custom pointer styling */
+.custom-pointer {
+  width: 20px;
+  height: 20px;
+  background-color: #42b983;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  transition: transform 0.1s ease;
+  transform: translate(-50%, -50%); 
+  animation: leak 1s infinite;
+}
+.trail-dot {
+      width: 10px;
+      height: 10px;
+      background-color: #42b983;
+      border-radius: 50%;
+      position: absolute;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      animation: fadeOut 0.6s forwards ease-out;
+      z-index: 1000; 
+    }
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(3); 
+      }
+    }
+
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    // Create the custom pointer element
+    const customPointer = document.createElement('div');
+    customPointer.classList.add('custom-pointer');
+    document.body.appendChild(customPointer);
+
+    // Track mouse movements
+    document.addEventListener('mousemove', (event) => {
+      const mouseX = event.clientX;
+      const mouseY = event.clientY;
+
+      // Move the custom pointer with the mouse
+      customPointer.style.left = mouseX + 'px';
+      customPointer.style.top = mouseY + 'px';
+      
+      const trailDot = document.createElement('div');
+        trailDot.classList.add('trail-dot');
+        document.body.appendChild(trailDot);
+
+        // Set the trail dot's position
+        trailDot.style.left = mouseX + 'px';
+        trailDot.style.top = mouseY + 'px';
+
+        // Remove the trail dot after the fade-out animation completes
+        setTimeout(() => {
+          trailDot.remove();
+        }, 50); // Same duration as the fade-out animation
+      });
+    });
+
+</script>

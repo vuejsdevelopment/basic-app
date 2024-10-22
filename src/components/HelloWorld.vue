@@ -96,18 +96,39 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.hello {
+  text-align: center;
+  background-color: black;
+  color: #42b983;;
+}
+
 h1, h2 {
   font-weight: normal;
+  margin-bottom: 25px;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
+  margin: 20px 0;
 }
+
 li {
   display: inline-block;
-  margin: 0 10px;
+  margin: 25px 20px;
 }
+
 a {
   color: #42b983;
+  padding: 10px 20px;
+  border: 2px solid #42b983;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a:hover {
+  background-color: #42b983;
+  color: black;
 }
 </style>
